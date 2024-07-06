@@ -27,10 +27,10 @@ jobs:
           channel: "beta" # 'dev', 'alpha', default to: 'stable'
           # flutter-version: '1.12.x' # you can also specify exact version of flutter
 
-      - working-directory: ./watch
-        run: |
-          echo ${{ secrets.KEYSTORE }} > keystore-b64.txt
-          base64 -d keystore-b64.txt > keystore.jks
+      - run: echo "${{ secrets.KEYSTORE }}" | base64 -d > ./watch/android/app/keystore.jks
+      - run: echo "${{ secrets.KEYSTORE }}" | base64 -d > ./phone/android/app/keystore.jks
+      - run: echo "${{ secrets.KEY_PROPERTIES }}" | base64 -d > ./watch/android/key.properties
+      - run: echo "${{ secrets.KEY_PROPERTIES }}" | base64 -d > ./phone/android/key.properties
 
       # Get flutter dependencies.
       - working-directory: ./watch
