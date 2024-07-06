@@ -27,7 +27,8 @@ jobs:
           channel: "beta" # 'dev', 'alpha', default to: 'stable'
           # flutter-version: '1.12.x' # you can also specify exact version of flutter
 
-      - run: |
+      - working-directory: ./watch
+        run: |
           echo ${{ secrets.KEYSTORE }} > keystore-b64.txt
           base64 -d keystore-b64.txt > keystore.jks
 
@@ -43,6 +44,10 @@ jobs:
           name: watch-apk
           path: watch/build/app/outputs/apk/release/app-release.apk
 
+      - working-directory: ./phone
+        run: |
+          echo ${{ secrets.KEYSTORE }} > keystore-b64.txt
+          base64 -d keystore-b64.txt > keystore.jks
       # Get flutter dependencies.
       - working-directory: ./phone
         run: flutter pub get
