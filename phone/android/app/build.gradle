@@ -28,10 +28,10 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 } else {
     keystoreProperties = {
-        storeFile: file("../keystore.jks")
-        storePassword:  System.getenv("RELEASE_KEYSTORE_PASSWORD")
-        keyAlias:  System.getenv("RELEASE_KEYSTORE_ALIAS")
-        keyPassword: System.getenv("RELEASE_KEY_PASSWORD")
+        storeFile file("../keystore.jks")
+        storePassword  System.getenv("RELEASE_KEYSTORE_PASSWORD")
+        keyAlias  System.getenv("RELEASE_KEYSTORE_ALIAS")
+        keyPassword System.getenv("RELEASE_KEY_PASSWORD")
     }
 }
 
