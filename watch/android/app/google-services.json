@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "176203798261",
+    "project_id": "magiwatch-d49c7",
+    "storage_bucket": "magiwatch-d49c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176203798261:android:13641d76fb4a853ce917bc",
+        "android_client_info": {
+          "package_name": "nl.mrtwixxy.magiwatch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8LFi1ArsiP2Mgx1s8woisHf5mZCH5qAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
