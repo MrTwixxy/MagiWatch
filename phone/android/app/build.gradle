@@ -27,6 +27,7 @@ def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 } else {
+    keystoreProperties = {}
     keystoreProperties['storeFile'] = file("../keystore.jks")
     keystoreProperties['storePassword'] = System.getenv("RELEASE_KEYSTORE_PASSWORD")
     keystoreProperties['keyAlias'] = System.getenv("RELEASE_KEYSTORE_ALIAS")
