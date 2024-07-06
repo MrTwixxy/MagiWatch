@@ -43,11 +43,6 @@ jobs:
         with:
           name: watch-apk
           path: watch/build/app/outputs/apk/release/app-release.apk
-
-      - working-directory: ./phone
-        run: |
-          echo ${{ secrets.KEYSTORE }} > keystore-b64.txt
-          base64 -d keystore-b64.txt > keystore.jks
       # Get flutter dependencies.
       - working-directory: ./phone
         run: flutter pub get
