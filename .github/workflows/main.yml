@@ -39,6 +39,11 @@ jobs:
     # Build apk.
     - run: flutter build apk
 
+    - uses: actions/upload-artifact@v1
+      with:
+        name: watch-apk
+        path: watch/build/app/outputs/apk/release/app-release.apk
+
         # Get flutter dependencies.
     - run: cd ../phone
     - run: flutter pub get
@@ -54,5 +59,5 @@ jobs:
     # Upload generated apk to the artifacts.
     - uses: actions/upload-artifact@v1
       with:
-        name: release-apk
-        path: watch/build/app/outputs/apk/release/app-release.apk
+        name: phone-apk
+        path: phone/build/app/outputs/apk/release/app-release.apk
