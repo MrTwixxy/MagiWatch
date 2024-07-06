@@ -62,7 +62,7 @@ android {
        release {
            keyAlias keystoreProperties['keyAlias'] ? keystoreProperties['keyAlias'] : System.getenv("RELEASE_KEYSTORE_ALIAS")
            keyPassword keystoreProperties['keyPassword'] ? keystoreProperties['keyPassword'] : System.getenv("RELEASE_KEY_PASSWORD")
-           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : file("../keystore.jks")
            storePassword keystoreProperties['storePassword'] ? keystoreProperties['storePassword'] : System.getenv("RELEASE_KEYSTORE_PASSWORD")
        }
    }
