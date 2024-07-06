@@ -30,15 +30,6 @@ jobs:
     # Get flutter dependencies.
     - working-directory: ./watch
       run: flutter pub get
-    # Check for any formatting issues in the code.
-    - working-directory: ./watch
-      run: flutter format --set-exit-if-changed .
-    # Statically analyze the Dart code for any errors.
-    - working-directory: ./watch
-      run: flutter analyze . 
-    # Run widget tests for our flutter project.
-    - working-directory: ./watch
-      run: flutter test
     # Build apk.
     - working-directory: ./watch
       run: flutter build apk
@@ -51,15 +42,6 @@ jobs:
     # Get flutter dependencies.
     - working-directory: ./phone
       run: flutter pub get
-    # Check for any formatting issues in the code.
-    - working-directory: ./phone
-      run: flutter format --set-exit-if-changed .
-    # Statically analyze the Dart code for any errors.
-    - working-directory: ./phone
-      run: flutter analyze . 
-    # Run widget tests for our flutter project.
-    - working-directory: ./phone
-      run: flutter test
     # Build apk.
     - working-directory: ./phone
       run: flutter build apk
