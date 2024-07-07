@@ -11,4 +11,4 @@ Bekijk je Magister rooster en je laatste cijfers direct vanaf je WearOS smartwat
 3. Installeer `MagiWatch_Watch.apk` op uw WearOS smartwatch (Klik [Hier](https://www.makeuseof.com/sideload-apps-wear-os-galaxy-watch/) voor meer informatie als u niet weet hoe dit werkt)
 4. Open de app op zowel uw telefoon als smartwatch
 5. Selecteer uw apparaat in de app op uw telefoon en login met Magister
-6. Je bent ingelogd en kan nu je rooster een laatste cijfers zien op je smartwatch zonder dat je telefoon in de buurt is!
+6. Je bent ingelogd en kan nu je rooster en laatste cijfers zien op je smartwatch zonder dat je telefoon in de buurt is!
