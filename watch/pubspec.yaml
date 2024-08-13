@@ -19,6 +19,7 @@ dependencies:
   path_provider: ^2.1.2
   rotary_scrollbar: ^0.1.1
   wearable_rotary: ^2.0.2
+  win32: 5.5.4
 
 dev_dependencies:
   flutter_test:

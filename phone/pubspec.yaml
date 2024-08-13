@@ -13,6 +13,7 @@ dependencies:
   flutter_wear_os_connectivity: ^1.0.0
   pointycastle: ^3.7.4
   webview_flutter: ^4.7.0
+  win32: 5.5.4
 
 dev_dependencies:
   flutter_test:
