@@ -401,20 +401,28 @@ class MagiWatchState extends State<MagiWatch> {
                                                 const Text("Geen Resultaten")),
                                         footer()
                                       ])
-                                    : ind == 0
+                                    : length == 1
                                         ? Column(children: [
                                             header(screenHeight, account!,
                                                 formatDate, index),
-                                            listItem(events[ind], length)
+                                            listItem(events[ind], length),
+                                            footer()
                                           ])
-                                        : ind == length - 1
-                                            ? Column(
-                                                children: [
-                                                  listItem(events[ind], length),
-                                                  footer()
-                                                ],
-                                              )
-                                            : listItem(events[ind], length);
+                                        : ind == 0
+                                            ? Column(children: [
+                                                header(screenHeight, account!,
+                                                    formatDate, index),
+                                                listItem(events[ind], length)
+                                              ])
+                                            : ind == length - 1
+                                                ? Column(
+                                                    children: [
+                                                      listItem(
+                                                          events[ind], length),
+                                                      footer()
+                                                    ],
+                                                  )
+                                                : listItem(events[ind], length);
                               }))),
                   onRefresh: () async {
                     await account!.api.refreshCalendarEvents(account!.person);
@@ -586,20 +594,31 @@ class _GradesScreen extends State<GradesScreen> {
                                       gradesFooter()
                                     ],
                                   )
-                                : ind == 0
+                                : length == 1
                                     ? Column(
                                         children: [
                                           header(screenHeight, account!, () {},
                                               0, true),
-                                          gradeListItem(length, grades[ind])
+                                          gradeListItem(length, grades[ind]),
+                                          gradesFooter()
                                         ],
                                       )
-                                    : ind == length - 1
-                                        ? Column(children: [
-                                            gradeListItem(length, grades[ind]),
-                                            gradesFooter()
-                                          ])
-                                        : gradeListItem(length, grades[ind]);
+                                    : ind == 0
+                                        ? Column(
+                                            children: [
+                                              header(screenHeight, account!,
+                                                  () {}, 0, true),
+                                              gradeListItem(length, grades[ind])
+                                            ],
+                                          )
+                                        : ind == length - 1
+                                            ? Column(children: [
+                                                gradeListItem(
+                                                    length, grades[ind]),
+                                                gradesFooter()
+                                              ])
+                                            : gradeListItem(
+                                                length, grades[ind]);
                           })))));
     });
   }
