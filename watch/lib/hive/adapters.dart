@@ -13,12 +13,14 @@ class Account extends HiveObject {
   ApiStorage? apiStorage = ApiStorage();
   @HiveField(2)
   late Person person;
+  @HiveField(3)
+  String? latestVersion;
 
   Api get api {
     return Magister(this);
   }
 
-  Account({this.id = 0});
+  Account({this.id = 0, this.latestVersion = ""});
 
   Account get copy {
     Account objectInstance = Account(id: id);
@@ -57,12 +59,11 @@ class Person {
   @HiveField(6)
   List<Grade> grades = [];
 
-  Person({
-    required this.id,
-    required this.firstName,
-    this.lastName = "",
-    this.middleName,
-  });
+  Person(
+      {required this.id,
+      required this.firstName,
+      this.lastName = "",
+      this.middleName});
 }
 
 @HiveType(typeId: 4)

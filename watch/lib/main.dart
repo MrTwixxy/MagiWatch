@@ -1,12 +1,16 @@
 import 'dart:convert';
 
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_wear_os_connectivity/flutter_wear_os_connectivity.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:magiwatch/api/magister/api.dart';
 import 'package:magiwatch/hive/adapters.dart';
+import 'package:magiwatch/firebase_options.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:rotary_scrollbar/rotary_scrollbar.dart';
 
 void main() async {
@@ -29,6 +33,14 @@ void main() async {
 
   await Hive.openBox<Account>('accountList');
   // await Hive.box<Account>("accountList").clear();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
+
+  FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+  remoteConfig.setConfigSettings(RemoteConfigSettings(
+    fetchTimeout: const Duration(seconds: 20),
+    minimumFetchInterval: const Duration(hours: 24),
+  ));
 
   runApp(const MainApp());
 }
@@ -129,12 +141,22 @@ class MagiWatchState extends State<MagiWatch> {
 
   bool loading = false;
 
+  String version = "";
+
   @override
   void initState() {
     super.initState();
     if (account == null) {
       connect();
     }
+    fetchVersion();
+  }
+
+  Future<void> fetchVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      version = packageInfo.version;
+    });
   }
 
   Future<void> connect() async {
@@ -342,7 +364,30 @@ class MagiWatchState extends State<MagiWatch> {
                             color: Theme.of(context).colorScheme.onBackground),
                       )
                     ],
-                  )))
+                  ))),
+          const SizedBox(height: 10),
+          Padding(
+              padding: EdgeInsets.only(
+                top: 5,
+                bottom: 5,
+                left: screenWidth * 0.075,
+                right: screenWidth * 0.075,
+              ),
+              child: Column(
+                children: [
+                  Text(version.isNotEmpty ? "MagiWatch v" + version : ""),
+                  Text(
+                    account?.latestVersion != null &&
+                            account!.latestVersion!.isNotEmpty &&
+                            version.isNotEmpty &&
+                            version != account?.latestVersion
+                        ? "Er is een nieuwe update beschikbaar op https://github.com/MrTwixxy/MagiWatch"
+                        : "",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 9),
+                  )
+                ],
+              ))
         ]));
   }
 

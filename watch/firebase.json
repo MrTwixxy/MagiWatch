@@ -1,0 +1,21 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "magiwatch-4c8b3",
+          "appId": "1:641109045712:android:3d364c06c8fc31e475c9d5",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "magiwatch-4c8b3",
+          "configurations": {
+            "android": "1:641109045712:android:3d364c06c8fc31e475c9d5"
+          }
+        }
+      }
+    }
+  }
+}

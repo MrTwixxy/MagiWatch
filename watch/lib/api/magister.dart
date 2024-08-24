@@ -1,3 +1,4 @@
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:magiwatch/api/abstract_api.dart';
 import 'package:magiwatch/api/magister/api.dart';
@@ -13,6 +14,8 @@ class Magister implements Api {
 
   @override
   late bool isOnline = true;
+
+  FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
 
   @override
   Future<void> refreshCalendarEvents(Person person) async {
@@ -42,6 +45,8 @@ class Magister implements Api {
     }
 
     if (account.isInBox) await account.save();
+
+    saveLatestVersion();
   }
 
   @override
@@ -72,5 +77,11 @@ class Magister implements Api {
   @override
   Future<void> logout() async {
     await Hive.box<Account>('accountList').clear();
+  }
+
+  Future<void> saveLatestVersion() async {
+    await remoteConfig.fetchAndActivate();
+    account.latestVersion = await remoteConfig.getString("latest_version");
+    if (account.isInBox) await account.save();
   }
 }

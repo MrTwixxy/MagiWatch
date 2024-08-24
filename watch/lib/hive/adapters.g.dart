@@ -18,6 +18,7 @@ class AccountAdapter extends TypeAdapter<Account> {
     };
     return Account(
       id: fields[0] as int,
+      latestVersion: fields[3] as String?,
     )
       ..apiStorage = fields[1] as ApiStorage?
       ..person = fields[2] as Person;
@@ -26,13 +27,15 @@ class AccountAdapter extends TypeAdapter<Account> {
   @override
   void write(BinaryWriter writer, Account obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.apiStorage)
       ..writeByte(2)
-      ..write(obj.person);
+      ..write(obj.person)
+      ..writeByte(3)
+      ..write(obj.latestVersion);
   }
 
   @override
