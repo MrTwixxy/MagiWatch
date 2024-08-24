@@ -61,12 +61,15 @@ CalendarEvent? magisterCalendarEvent([Map? event]) {
     return CalendarEvent(
         omschrijving: event["Omschrijving"],
         status: event["Status"],
-        // locations: event["Lokalen"]
-        //     .map<String>((lokaal) => lokaal["Naam"].toString())
-        //     .toList(),
         locations: event["Lokalen"]
-            .map<String>((lokaal) => lokaal["Naam"].toString())
-            .toList()?[event["Lokatie"]],
+                    .map<String>((lokaal) => lokaal["Naam"].toString())
+                    .toList()
+                    .length >
+                0
+            ? event["Lokalen"]
+                .map<String>((lokaal) => lokaal["Naam"].toString())
+                .toList()
+            : [event["Lokatie"] ?? ""],
         description: event["Inhoud"] ?? "",
         end: DateTime.parse(event["Einde"] ?? "1970-01-01T00:00:00.0000000Z")
             .toUtc(),
