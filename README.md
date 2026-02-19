@@ -2,7 +2,8 @@
 
 ### Je Magister Rooster op je smartwatch
 
-Bekijk je Magister rooster en je laatste cijfers direct vanaf je WearOS smartwatch met MagiWatch
+Kan je je rooster niet meer zien door een telefoonverbod op school? Dan is MagiWatch misschien de oplossing voor jou!
+Bekijk je Magister rooster en je laatste cijfers direct vanaf je WearOS smartwatch met MagiWatch.
 
 ## Installatie
 
